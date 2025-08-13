@@ -134,7 +134,22 @@ function submit(){
        window.location.reload ()
     }
 }
+ const silang = document.getElementById("silang")
+ const linkwoi = document.getElementById("linkwoi")
+function link() {
+    linkwoi.style.display = "block";
 
+    silang.addEventListener("click", () => {
+    
+        // Toggle display
+        if (linkwoi.style.display === "block") {
+            linkwoi.style.display = "none";
+        } else {
+            linkwoi.style.display = "block";
+
+        }
+    });
+}
 function dataUser(jawabanUser){
     userData.push(user.value)
     console.log(userData)
