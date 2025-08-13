@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redesign mega project with tailwindcss</title>
+     <link href="src/output.css" rel="stylesheet">
+     <style>
+        *{
+            scroll-behavior: smooth;
+        }
+       #calc-right button{
+            width : 50%;
+            border: 1px solid;
+            padding : 2px;
+            cursor: pointer;
+            background-color: rgb(211, 213, 214);
+        }
+        #calc-left button{
+            width : 33%;
+            border: 1px solid;
+            padding : 2px;
+            cursor: pointer;
+            background-color: rgb(211, 213, 214);
+        }
+            #calc-left button:hover{
+            background-color: rgb(176, 175, 173);
+        }
+          #calc-right button:hover{
+            background-color: rgb(176, 175, 173);
+        }
+
+        #chord button{
+            width : 20%;
+            background-color: rgb(255, 255, 255);
+            padding : 10px;
+            border : 1px solid;
+            align-items: center;
+            height : 300px;
+
+        }
+        #chord button:hover{
+            background-color: rgb(176, 178, 180);
+            width : 19.5%;
+        }
+     </style>
+
+</head>
+<body>
+
+    <div class="parallax-1 text-[aliceblue] w-full h-auto shadow-2xl border-b border-black">
+        <!--Navbar-->
+        <div class="navbar w-full flex gap-10 p-2 font-mono text-base sm:text-xl">
+        <div class="logo mr-auto p-2">
+            dimsKuy.com
+        </div>
+        <div class="link p-2 z-10">
+            <ul class="flex gap-10  ">
+                <li><a  class="inline-block transition-all duration-700 ease-in-out hover:text-amber-300 hover:animate-pulse" href="#">About</a></li>
+                <li><a  class="inline-block transition-all duration-700 ease-in-out hover:text-amber-300 hover:animate-pulse"href="#calc-left">Calculator</a></li>
+                <li> <a class="inline-block transition-all duration-700 ease-in-out  hover:text-amber-300 hover:animate-pulse " href="#">ChatBot</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--Navbar Closed-->
+
+    <!--Content-->
+    <div class="container p-4 min-w-full flex">
+        <div class="box-left w-[40%] sm:w-[40%] ">
+            <div class="text font-serif text-base sm:text-2xl ">
+                <div class="title font-bold">
+                    WHO'S DIMS???
+                </div>
+                <div class="description mb-5">
+                    The man Who love Studying Hard 📌
+                </div>
+                                <div class="title font-bold">
+                   WHAT'S HIS HOBBY?
+                </div>
+                <div class="description mb-5">
+                    <li>Exercise</li>
+                    <li>Basketball</li>
+                    <li>Reading Book</li>
+                </div>
+                                <div class="title font-bold">
+                    DOES HE HAS SKILLS?
+                </div>
+                <div class="description mb-5">
+                    Of course he has, may i mention it :
+                    <li>Web Devolopment</li>
+                    <li>Dicipline</li>
+                    <li>Public Speaking</li>
+                    <li>Playing Guitar</li>
+                </div>
+                                <div class="title font-bold">
+                    WHY DIMS??
+                </div>
+                <div class="description mb-5">
+                   Why not? 😹
+                </div>
+                
+            </div>
+        </div>
+        <div class="box-right w-[60%] overflow-hidden">
+            <div class="wrap-btn w-full flex justify-center ">
+                <button class="transition-all duration-700 ease-in-out bg-red-900 hover:bg-red-700 cursor-pointer p-3 rounded-[10px] shadow-2xs shadow-white" onclick="instagram()">Follow me</button>
+            </div>
+            <div class="wrap-img w-full h-[100%] flex justify-center items-end">
+                <img src="asset/ubah_ekspresinya_leb-removebg-preview.png  " class="h-[300px] sm:h-[400px]">
+            </div>
+            
+        </div>
+    </div>
+    <div id="loading"class="wrap-load w-full h-screen justify-center items-center fixed top-0 hidden">
+         <div class="loading w-[100px] h-[100px] rounded-full border-t-20 border-black animate-spin">
+   </div>
+    </div>
+  
+    <!--COntent 1 Closed-->
+    </div>
+    <div id="parallax2"class="parallax2 min-h-screen transition-all duration-700 ease-in-out">
+        <div class="container2 min-w-full min-h-screen flex max-sm:flex-col ">
+            <div class="box-left2 min-w-[50%] flex justify-center items-center ">
+                <div class="calculator bg-[#b2afaf] p-5 shadow-black shadow-2xl mt-25">
+                     <div id="value" class="p-2 h-[50px] bg-[#e7e7e7] border-1 flex items-center justify-center font-sans text-xl">
+                    </div>
+                    <div class="in-calculator flex gap-0">
+                   
+                    <div id="calc-left" class="bg-amber-100 w-[60%]">
+
+                    </div>
+                    <div id="calc-right" class="w-[40%]">
+
+                    </div>
+            
+                </div>
+            </div>
+
+                    </div>
+            <div class="box-right2 min-w-[50%] min-h-screen flex justify-center items-center">
+                <div class="wrap-piano w-[300px] h-[300px] bg-[black] shadow-black shadow-2xl">
+                    <div class="piano p-4">
+                    <div class="chord" id="chord">
+
+                    </div>
+                    </div>
+                </div>  
+            </div>
+        </div>   
+    </div>
+
+    <div class="parallax3 w-full h-screen  flex justify-center items-center">
+            <div class="wrap-bot p-3 bg-[#4c4c4c]">
+                <div class=" mb-3 bot-jawab h-[40px] font-serif flex justify-center items-center text-[white]" id="botJawab">
+            
+                </div>
+                <div class="wrap-user flex gap-3 justify-around">
+                     <input class="bg-white p-3"type="text" placeholder="haii..." id="userTanya">
+                <button class="hover:bg-amber-50 submit p-3 bg-[#c7c4c4] " onclick="submit()">Kirim</button>
+                </div>
+               
+                </div>
+            </div>
+        </div> 
+    <script src="src/ux.js"></script>
+        <video autoplay loop muted class="z-[-1] fixed top-0 min-w-[100%] min-h-[100%]">
+        <source src="asset/283431_medium.mp4" type="video/mp4" >
+    </video>
+
+
+</body>
+</html>
