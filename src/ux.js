@@ -6,6 +6,7 @@ function instagram(){
     load.style.display = "flex"
 
     setTimeout(()=>{
+        load.style.display = "none"
         window.location.href="https://instagram.com/ptramadian_"
           body.style.transition = "all 0.3s ease-in-out"
     },2000)
