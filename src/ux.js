@@ -1,4 +1,3 @@
-
 const load = document.getElementById("loading")
 const body = document.body
 function instagram(){
@@ -12,7 +11,6 @@ function instagram(){
     },2000)
     
 }
-
 
 const value = document.getElementById("value")
 const calcLeft = document.getElementById("calc-left")
@@ -105,9 +103,9 @@ const botAnswer = document.getElementById("botJawab")
 function botSay(data){
     return [
      'Hello! my name is DimsKuyBot, Who`s your name?',           //Fungsi ini bikin list pertanyaan (pakai array).           
-        `Hii ${data?.nama}, How old are youu?`,                     // 'data?' itu optional chaining. Jadi kalau datanya belum ada, gak error
-        `Ouhh ${data?.usia}, what about your goals?`,               //- Gunanya buat personalisasi pertanyaan sesuai jawaban user sebelumnya 🫶
-        `woww ${data?.citaCita}, such a good goal, Goodluck!`,
+     `Hii ${data?.nama}, How old are youu?`,                     // 'data?' itu optional chaining. Jadi kalau datanya belum ada, gak error
+     `Ouhh ${data?.usia}, what about your goals?`,               //- Gunanya buat personalisasi pertanyaan sesuai jawaban user sebelumnya 🫶
+     `woww ${data?.citaCita}, such a good goal, Goodluck!`,
 ]
 }
 botAnswer.innerText = botSay()[0]
@@ -118,7 +116,7 @@ function submit(){
 
     enit = enit + 1
     if(enit === 1){
-        dataUser({nama : user.value})
+        dataUser({nama : user.value}) 
             user.value = ""
     }
     else if(enit === 2){
@@ -154,7 +152,7 @@ function link() {
 function dataUser(jawabanUser){
     userData.push(user.value)
     console.log(userData)
-     body.style.opacity = "0.7"
+    body.style.opacity = "0.7"
     load.style.display = "flex"
 
     setTimeout(()=>{
