@@ -101,63 +101,123 @@ const botAnswer = document.getElementById("botJawab")
 
 function botSay(data){
     return [
-     'Hello! my name is DimsKuyBot, Who`s your name?',           //Fungsi ini bikin list pertanyaan (pakai array).           
-     `Hii ${data?.nama}, How old are youu?`,                     // 'data?' itu optional chaining. Jadi kalau datanya belum ada, gak error
-     `Ouhh ${data?.usia}, what about your goals?`,               //- Gunanya buat personalisasi pertanyaan sesuai jawaban user sebelumnya 🫶
-     `woww ${data?.citaCita}, such a good goal, Goodluck!`,
-]
+        `HI Im dimskuy bot, who are you?`,
+        `Hi ${data?.nama} , how old are you?`,
+        `Ouhh ${data?.usia}, what's your goals?`,
+        `WOW ${data?.hobi}, thats a great goals!`
+    ]
+
 }
 botAnswer.innerText = botSay()[0]
-enit = 0
-let Data = [ ]
+let userData = [ ]
+let enit = 0
 
 function submit(){
-
     enit = enit + 1
     if(enit === 1){
-        dataUser({nama : user.value}) 
-            user.value = ""
+        userAnswer({nama : user.value})
+        user.value = ""
     }
-    else if(enit === 2){
-        dataUser({usia : user.value})
-        setTimeout(()=>{
-            user.value = ""
-        },2000)
+     else if(enit === 2){
+        userAnswer({usia : user.value})
+        user.value = ""
     }
      else if(enit === 3){
-        dataUser({citaCita : user.value})
-        user.value = "thanks"
+        userAnswer({hobi : user.value})
+        user.value = ""
     }
      else if(enit === 4){
-       window.location.reload ()
+        botAnswer.innerText = "Thankyouu see youu again"
+        setTimeout(()=>{
+            load.style.display = "flex"
+            body.style.opacity = "0.4"
+        },1000)
+            setTimeout(()=>{
+            load.style.display = "none"
+            body.style.opacity = "1"
+            window.location.reload()
+        },3000)
+
+
     }
 }
- const silang = document.getElementById("silang")
- const linkwoi = document.getElementById("linkwoi")
-function link() {
-    linkwoi.style.display = "block";
 
-    silang.addEventListener("click", () => {
-    
-        // Toggle display
-        if (linkwoi.style.display === "block") {
-            linkwoi.style.display = "none";
-        } else {
-            linkwoi.style.display = "block";
-
-        }
-    });
-}
-function dataUser(jawabanUser){
-    Data.push(user.value)
-    body.style.opacity = "0.7"
+function userAnswer(jawabanUser){
+    userData.push(user.value)
+    body.style.opacity = "0.3"
     load.style.display = "flex"
-
     setTimeout(()=>{
-            botAnswer.innerHTML = botSay(jawabanUser)[enit]
-            body.style.opacity = "1"
+    body.style.opacity = "1"
     load.style.display = "none"
-    body.style.transition = "all 0.3s ease-in-out"
-        },2000)
-
+    botAnswer.innerText = botSay(jawabanUser)[enit]
+    },2000)
 }
+
+
+
+
+
+
+
+// function botSay(data){
+//     return [
+//      'Hello! my name is DimsKuyBot, Who`s your name?',           //Fungsi ini bikin list pertanyaan (pakai array).           
+//      `Hii ${data?.nama}, How old are youu?`,                     // 'data?' itu optional chaining. Jadi kalau datanya belum ada, gak error
+//      `Ouhh ${data?.usia}, what about your goals?`,               //- Gunanya buat personalisasi pertanyaan sesuai jawaban user sebelumnya 🫶
+//      `woww ${data?.citaCita}, such a good goal, Goodluck!`,
+// ]
+// }
+// botAnswer.innerText = botSay()[0]
+// enit = 0
+// let Data = [ ]
+
+// function submit(){
+
+//     enit = enit + 1
+//     if(enit === 1){
+//         dataUser({nama : user.value}) 
+//             user.value = ""
+//     }
+//     else if(enit === 2){
+//         dataUser({usia : user.value})
+//         setTimeout(()=>{
+//             user.value = ""
+//         },2000)
+//     }
+//      else if(enit === 3){
+//         dataUser({citaCita : user.value})
+//         user.value = "thanks"
+//     }
+//      else if(enit === 4){
+//        window.location.reload ()
+//     }
+// }
+//  const silang = document.getElementById("silang")
+//  const linkwoi = document.getElementById("linkwoi")
+// function link() {
+//     linkwoi.style.display = "block";
+
+//     silang.addEventListener("click", () => {
+    
+//         // Toggle display
+//         if (linkwoi.style.display === "block") {
+//             linkwoi.style.display = "none";
+//         } else {
+//             linkwoi.style.display = "block";
+
+//         }
+//     });
+// }
+// function dataUser(jawabanUser){
+//     Data.push(user.value)
+//     body.style.opacity = "0.7"
+//     load.style.display = "flex"
+
+//     setTimeout(()=>{
+//             botAnswer.innerHTML = botSay(jawabanUser)[enit]
+//             body.style.opacity = "1"
+//     load.style.display = "none"
+//     body.style.transition = "all 0.3s ease-in-out"
+//         },2000)
+
+// }
