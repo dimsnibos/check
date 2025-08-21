@@ -23,12 +23,11 @@ const enter = document.createElement("button")
 
 numbers.forEach((number)=>{
     const button = document.createElement("button")
-    button.innerText = number
+    button.innerHTML = number
     calcLeft.append(button)
     button.addEventListener("click",()=>{
-        value.innerText += number
+        value.innerHTML += number
     })
-
 })
 operations.forEach((operation)=>{
     const button = document.createElement("button")
@@ -86,7 +85,7 @@ bg.addEventListener("click", ()=>{
 })
 
 const piano = document.getElementById("chord")
-const chords = ["a", 'c', 'd','e','f']
+const chords = ["a", "c", "d", "e", "f"]
 chords.forEach((chord)=>{
     const button = document.createElement("button")
     button.innerText = chord
@@ -110,7 +109,7 @@ function botSay(data){
 }
 botAnswer.innerText = botSay()[0]
 enit = 0
-let userData = [ ]
+let Data = [ ]
 
 function submit(){
 
@@ -150,8 +149,7 @@ function link() {
     });
 }
 function dataUser(jawabanUser){
-    userData.push(user.value)
-    console.log(userData)
+    Data.push(user.value)
     body.style.opacity = "0.7"
     load.style.display = "flex"
 
