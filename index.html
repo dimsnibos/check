@@ -8,6 +8,7 @@
      <style>
         *{
             scroll-behavior: smooth;
+            transition: all 0.3s ease-in-out;
         }
        #calc-right button{
             width : 50%;
@@ -57,7 +58,7 @@
         <div class="link p-2">
             <button id="silang"class="= p-2 shadow-2xl hover:bg-[#c0c0c0] cursor-pointer transition-all duration-500 ease-in-out " onclick="link()"  >
                 =
-                <ul class=" gap-10 hidden sm:block" id="linkwoi">
+                <ul class=" gap-10 " id="linkwoi">
                 <li><a  class="inline-block transition-all duration-700 ease-in-out hover:text-amber-300 hover:animate-pulse" href="#">About</a></li>
                 <li><a  class="inline-block transition-all duration-700 ease-in-out hover:text-amber-300 hover:animate-pulse"href="#calc-left">Calculator</a></li>
                 <li> <a class="inline-block transition-all duration-700 ease-in-out  hover:text-amber-300 hover:animate-pulse " href="#bot">ChatBot</a></li>

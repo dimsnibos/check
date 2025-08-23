@@ -16,10 +16,10 @@ const value = document.getElementById("value")
 const calcLeft = document.getElementById("calc-left")
 const calcRight = document.getElementById("calc-right")
 const numbers = ["1","2","3","4","5","6","7","8","9","(","0",")"]
-const operations = ["x","/","+","-"]
+const operations = ["+","-","/","x"]
 const del = document.createElement("button")
-const clear = document.createElement("button")
 const enter = document.createElement("button")
+
 
 numbers.forEach((number)=>{
     const button = document.createElement("button")
@@ -29,48 +29,38 @@ numbers.forEach((number)=>{
         value.innerHTML += number
     })
 })
+
 operations.forEach((operation)=>{
     const button = document.createElement("button")
-    button.innerText = operation
+    button.innerHTML = operation
     calcRight.append(button)
     button.addEventListener("click",()=>{
-        value.innerText += operation
+        value.innerHTML += operation
     })
 })
 
-del.innerText="DEL"
+del.innerHTML = "DEL"
 calcRight.append(del)
-del.addEventListener("click", ()=>{
-    value.innerText = value.innerText.slice(0, -1)  //adalah cara untuk menghapus karakter terakhir dari teks
+del.addEventListener("click",()=>{
+    value.innerHTML = value.innerHTML.slice(0, -1)
 })
 
-clear.innerText = "CLR"
-calcRight.append(clear)
-clear.addEventListener("click",()=>{
-    value.innerText = "CLEAR THE AREA...."
-    setTimeout(()=>{
-        value.innerText =""
-    },1000)
-})
-
-enter.innerText ="="
+enter.innerHTML = "ENTER"
 calcRight.append(enter)
 enter.addEventListener("click",()=>{
-    let ekspresi = value.innerText
-    //ekspresi berarti segala hal yang menjadi innertext dari value
+    let ekspresi = value.innerHTML
     ekspresi = ekspresi.replace(/x/g, "*")
-    //mengubah nilai x dari ekspresi menajadi * (dalam menjalankan fungsi operasi)
     try{
-        value.innerText = eval(ekspresi)
+        value.innerHTML = eval(ekspresi)
     }
-    catch{
-        value.innerText = "error"
+    catch(error){
+        value.innerHTML = error
         setTimeout(()=>{
-            value.innerText=""
-        },1000)
+          value.innerHTML = ""  
+        },1200)
     }
-
 })
+
 const bg = document.createElement("button")
 const p2 = document.getElementById("parallax2")
 bg.innerText = "BGR"
@@ -85,13 +75,14 @@ bg.addEventListener("click", ()=>{
 })
 
 const piano = document.getElementById("chord")
-const chords = ["a", "c", "d", "e", "f"]
+const chords = ["a","c","d","e","f"]
 chords.forEach((chord)=>{
     const button = document.createElement("button")
-    button.innerText = chord
+    button.innerHTML = chord
     piano.append(button)
     button.addEventListener("click",()=>{
         const sound = new Audio(`asset/${chord}.wav`)
+        // value.innerHTML = chord
         sound.play()
     })
 })
@@ -99,66 +90,77 @@ chords.forEach((chord)=>{
 const user = document.getElementById("userTanya")
 const botAnswer = document.getElementById("botJawab")
 
-function botSay(data){
+function bottSay(data){
     return [
-        `HI Im dimskuy bot, who are you?`,
-        `Hi ${data?.nama} , how old are you?`,
-        `Ouhh ${data?.usia}, what's your goals?`,
-        `WOW ${data?.hobi}, thats a great goals!`
+        `Hi Im DIMSBOT, What's your name? `,
+        `Hi ${data?.nama}, what's your hobby?`,
+        `Wow ${data?.hobi}, where are u form? `,
+        `Ouhh youre from ${data?.kota}, that's good place`,
+        `Nice to talk with you, BYEE`
     ]
 
 }
-botAnswer.innerText = botSay()[0]
+
+botAnswer.innerHTML = bottSay()[0]
+enit = 0
 let userData = [ ]
-let enit = 0
 
 function submit(){
     enit = enit + 1
     if(enit === 1){
-        userAnswer({nama : user.value})
+        responseBot({nama : user.value})
         user.value = ""
     }
-     else if(enit === 2){
-        userAnswer({usia : user.value})
-        user.value = ""
+    else if(enit === 2){
+        responseBot({hobi : user.value})
+         user.value = ""
     }
-     else if(enit === 3){
-        userAnswer({hobi : user.value})
-        user.value = ""
+        else if(enit === 3){
+        responseBot({kota : user.value})
+        user.style.display = "none"
     }
-     else if(enit === 4){
-        botAnswer.innerText = "Thankyouu see youu again"
-        setTimeout(()=>{
+        else if(enit === 4){
+         botAnswer.innerHTML = bottSay()[4]
+                 user.style.display = "none"
+                         setTimeout(()=>{
+
             load.style.display = "flex"
-            body.style.opacity = "0.4"
-        },1000)
-            setTimeout(()=>{
-            load.style.display = "none"
-            body.style.opacity = "1"
+            body.style.opacity = '0.69'
+        },2000)
+        setTimeout(()=>{
             window.location.reload()
         },3000)
-
-
     }
+        
+
+    
 }
 
-function userAnswer(jawabanUser){
+function responseBot(jawabanUser){
     userData.push(user.value)
-    body.style.opacity = "0.3"
     load.style.display = "flex"
+    body.style.opacity = "0.6"
     setTimeout(()=>{
+         load.style.display = "none"
     body.style.opacity = "1"
-    load.style.display = "none"
-    botAnswer.innerText = botSay(jawabanUser)[enit]
-    },2000)
+    botAnswer.innerHTML = bottSay(jawabanUser)[enit]
+    },1100)
 }
 
 
+const silang = document.getElementById("silang")
+const link = document.getElementById("linkwoi")
+ link.style.display = "none"
 
-
-
-
-
+silang.addEventListener("click",()=>{
+   
+    if (link.style.display === "none"){
+        link.style.display = "block"
+    }
+    else{
+        link.style.display = "none"
+    }   
+})
 // function botSay(data){
 //     return [
 //      'Hello! my name is DimsKuyBot, Who`s your name?',           //Fungsi ini bikin list pertanyaan (pakai array).           
