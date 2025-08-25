@@ -15,21 +15,18 @@ function instagram(){
 const value = document.getElementById("value")
 const calcLeft = document.getElementById("calc-left")
 const calcRight = document.getElementById("calc-right")
-const numbers = ["1","2","3","4","5","6","7","8","9","(","0",")"]
+const numbers = ["1",'2','3','4','5','6','7','8','9','(','0',')']
 const operations = ["+","-","/","x"]
-const del = document.createElement("button")
-const enter = document.createElement("button")
 
 
 numbers.forEach((number)=>{
     const button = document.createElement("button")
     button.innerHTML = number
-    calcLeft.append(button)
     button.addEventListener("click",()=>{
         value.innerHTML += number
     })
+    calcLeft.append(button)
 })
-
 operations.forEach((operation)=>{
     const button = document.createElement("button")
     button.innerHTML = operation
@@ -39,13 +36,15 @@ operations.forEach((operation)=>{
     })
 })
 
-del.innerHTML = "DEL"
+const del = document.createElement("button")
+del.innerHTML="DEL"
 calcRight.append(del)
 del.addEventListener("click",()=>{
     value.innerHTML = value.innerHTML.slice(0, -1)
 })
 
-enter.innerHTML = "ENTER"
+const enter= document.createElement("button")
+enter.innerHTML="ENTER"
 calcRight.append(enter)
 enter.addEventListener("click",()=>{
     let ekspresi = value.innerHTML
@@ -56,22 +55,31 @@ enter.addEventListener("click",()=>{
     catch(error){
         value.innerHTML = error
         setTimeout(()=>{
-          value.innerHTML = ""  
+            value.innerHTML = ""
         },1200)
     }
 })
 
-const bg = document.createElement("button")
-const p2 = document.getElementById("parallax2")
-bg.innerText = "BGR"
-calcRight.append(bg)
-init = -1
-const color = ["white","yellow","brown","transparent"]
-bg.addEventListener("click", ()=>{
-    init++
-    console.log("A")
-    init <= 3
-    p2.style.backgroundColor = color[init]
+const clear = document.createElement("button")
+clear.innerHTML="CLEAR"
+calcRight.append(clear)
+clear.addEventListener("click",()=>{
+    value.innerHTML = "CLEAR THE AREA"
+    setTimeout(()=>{
+         value.innerHTML = ""
+    },1200)
+})
+
+init = 0
+const warna = ["red","blue","white","brown",'transparent']
+const bgrond = document.createElement("button")
+bgrond.innerHTML = "BGR"
+calcRight.append(bgrond)
+bgrond.addEventListener("click",()=>{
+    init ++
+    const page2 = document.getElementById("parallax2")
+    page2.style.backgroundColor = warna[init]
+
 })
 
 const piano = document.getElementById("chord")
@@ -82,7 +90,6 @@ chords.forEach((chord)=>{
     piano.append(button)
     button.addEventListener("click",()=>{
         const sound = new Audio(`asset/${chord}.wav`)
-        // value.innerHTML = chord
         sound.play()
     })
 })
@@ -90,67 +97,61 @@ chords.forEach((chord)=>{
 const user = document.getElementById("userTanya")
 const botAnswer = document.getElementById("botJawab")
 
-function bottSay(data){
+function botSay(data){
     return [
-        `Hi Im DIMSBOT, What's your name? `,
-        `Hi ${data?.nama}, what's your hobby?`,
-        `Wow ${data?.hobi}, where are u form? `,
-        `Ouhh youre from ${data?.kota}, that's good place`,
-        `Nice to talk with you, BYEE`
+        `Hello, i'm dimskuyBot, What's Yourname??`,
+        `Ouhh ${data?.nama}, where are you from?`,
+        `Ohh i see youre from ${data?.kota}, what's your goals?`,
+        `Wow ${data?.goals}, such a good goals!`,
     ]
-
 }
 
-botAnswer.innerHTML = bottSay()[0]
-enit = 0
-let userData = [ ]
+let enit = 0
+const userData = [ ]
+botAnswer.innerHTML = botSay()[0]
 
 function submit(){
     enit = enit + 1
-    if(enit === 1){
+    if (enit === 1){
         responseBot({nama : user.value})
-        user.value = ""
+        user.value = " "
     }
-    else if(enit === 2){
-        responseBot({hobi : user.value})
-         user.value = ""
-    }
-        else if(enit === 3){
+    else if (enit === 2){
         responseBot({kota : user.value})
+        user.value = " "
+    }
+    else if (enit === 3){
+        responseBot({goals : user.value})
+        user.value = " "
         user.style.display = "none"
     }
-        else if(enit === 4){
-         botAnswer.innerHTML = bottSay()[4]
-                 user.style.display = "none"
-                         setTimeout(()=>{
-
-            load.style.display = "flex"
-            body.style.opacity = '0.69'
-        },2000)
+    else if (enit === 4){
+         load.style.display = "flex"
+    body.style.opacity = "0.7"
         setTimeout(()=>{
-            window.location.reload()
-        },3000)
-    }
+window.location.reload()
+        },1200)
         
+       
+    }
 
-    
 }
 
 function responseBot(jawabanUser){
     userData.push(user.value)
     load.style.display = "flex"
-    body.style.opacity = "0.6"
+    body.style.opacity = "0.7"
     setTimeout(()=>{
          load.style.display = "none"
     body.style.opacity = "1"
-    botAnswer.innerHTML = bottSay(jawabanUser)[enit]
-    },1100)
+    botAnswer.innerHTML = botSay(jawabanUser)[enit]
+    },1500)
+    
 }
-
 
 const silang = document.getElementById("silang")
 const link = document.getElementById("linkwoi")
- link.style.display = "none"
+link.style.display = "none"
 
 silang.addEventListener("click",()=>{
    
