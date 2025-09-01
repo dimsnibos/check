@@ -144,6 +144,7 @@ function responseBot(jawabanUser){
       load.style.display = "flex"
       body.style.opacity = "0.7"
       setTimeout(()=>{
+        user.value = " "
         load.style.display = "none"
         body.style.opacity = "1"
         botAnswer.innerText = botSay(jawabanUser)[init]
