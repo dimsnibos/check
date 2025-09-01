@@ -151,3 +151,12 @@ function responseBot(jawabanUser){
       },1200)
 
 }
+
+function whatsApp(){
+    load.style.display ="flex"
+    body.style.opacity = "0.7"
+    setTimeout(()=>{
+   window.location.href = "https://wa.me/6287763628863"
+    },1300)
+ 
+}
