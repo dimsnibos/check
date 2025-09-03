@@ -6,7 +6,7 @@ function instagram(){
     body.style.opacity = "0.7"
     setTimeout(()=>{
         window.location.href = "https://instagram.com/ptramadian_"
-    })
+    },1200)
 }
 
 const value = document.getElementById("value")
@@ -109,7 +109,7 @@ function botSay(data){
     ]
 }
 
-let userData = [ ]
+let x = [ ]
 botAnswer.innerHTML = botSay()[0]
 let init = 0
 
@@ -137,7 +137,7 @@ function submit(){
 }
 
 function responseBot(jawabanUser){
-    userData.push(user.value)
+    x.push(user.value)
     load.style.display = "flex"
     body.style.opacity = "0.7"
     setTimeout(()=>{
@@ -145,16 +145,8 @@ function responseBot(jawabanUser){
         user.value = ""
         body.style.opacity = "1"
         botAnswer.innerHTML = botSay(jawabanUser)[init]
-    },1200)
-   
+    },1200)   
 }
-
-
-
-
-
-
-
 
 
 
