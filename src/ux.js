@@ -101,43 +101,44 @@ const user = document.getElementById("userTanya")
 const botAnswer = document.getElementById("botJawab")
 
 function botSay(data){
-    return [
-        `Hello, Im dims, Who are you?`,
-        `Ouhh ${data?.nama}, Whats your hobby?`,
-        `Wow ${data?.hobi}, thats a good hobby, where are you from?`,
-        `Ouhh youre from ${data?.kota}, okay Nice to know you!`,
+    return[
+        `Hello, whats your name??`,
+        `Hi ${data?.nama}, Where are you from? `,
+        `Ouh youre from ${data?.kota}, great!, what's your hoby?`,
+        `Wow ${data?.hobi}, such a good hobby`,
     ]
 }
 
-let x = [ ]
-botAnswer.innerHTML = botSay()[0]
+let userData = [ ]
 let init = 0
+botAnswer.innerHTML = botSay()[0]
 
 function submit(){
     init ++
     if(init === 1){
-        responseBot({nama : user.value})}
+        responseBot({nama : user.value})
+    }
     else if (init === 2){
-        responseBot({hobi : user.value})
+        responseBot({kota : user.value})
     }
     else if (init === 3){
-        responseBot({kota : user.value})
+        responseBot({hobi : user.value})
         user.style.display = "none"
     }
     else if (init === 4){
-        botAnswer.innerHTML = "Finishing..........."
+        botAnswer.innerHTML = "Thank You"
         setTimeout(()=>{
             load.style.display = "flex"
             body.style.opacity = "0.7"
-        },800)
+        },500)
         setTimeout(()=>{
             window.location.reload()
-        },3000)
+        },1200)
     }
 }
 
 function responseBot(jawabanUser){
-    x.push(user.value)
+    userData.push(user.value)
     load.style.display = "flex"
     body.style.opacity = "0.7"
     setTimeout(()=>{
@@ -145,13 +146,8 @@ function responseBot(jawabanUser){
         user.value = ""
         body.style.opacity = "1"
         botAnswer.innerHTML = botSay(jawabanUser)[init]
-    },1200)   
+    },1200)
 }
-
-
-
-
-
 
 
 
