@@ -13,25 +13,39 @@ const value = document.getElementById("value")
 const calcLeft = document.getElementById("calc-left")
 const calcRight = document.getElementById("calc-right")
 
-const numbers = ["1","2","3","4","5","6","7","8","9","(","0",")"]
+const numbers = ['1','2','3','4','5','6','7','8','9','(',"0",")"]
 numbers.forEach((number)=>{
     const button = document.createElement("button")
-    calcLeft.append(button)
-    button.innerHTML = number
+    button.innerText = number
     button.addEventListener("click",()=>{
         value.innerHTML += number
     })
+    calcLeft.append(button)
 })
 
 const operations = ["+","-","x","/"]
 operations.forEach((operation)=>{
     const button = document.createElement("button")
     button.innerHTML = operation
-    calcRight.append(button)
     button.addEventListener("click",()=>{
         value.innerHTML += operation
     })
+    calcRight.append(button)
 })
+
+const enter = document.createElement("button")
+enter.innerHTML = "ENTER"
+enter.addEventListener("click",()=>{
+    let ekspresi = value.innerHTML
+    ekspresi = ekspresi.replace(/x/g,"*")
+    try{
+        value.innerHTML = eval(ekspresi)
+    }
+    catch(error){
+        value.innerHTML = error
+    }
+})
+calcRight.append(enter)
 
 const del = document.createElement("button")
 del.innerHTML = "DEL"
@@ -43,47 +57,36 @@ calcRight.append(del)
 const clear = document.createElement("button")
 clear.innerHTML = "CLEAR"
 clear.addEventListener("click",()=>{
-    value.innerHTML = " "
+    value.innerHTML = "CLEAR THE AREA"
+    setTimeout(()=>{
+        value.innerHTML = ""
+    },1200)    
 })
 calcRight.append(clear)
 
-const enter = document.createElement("button")
-enter.innerHTML = "ENTER"
-calcRight.append(enter)
-enter.addEventListener("click",()=>{
-    let ekspresi = value.innerHTML
-    ekspresi = ekspresi.replace(/x/g,"*")
-    try{
-        value.innerHTML = eval(ekspresi)
-    }
-    catch(error){
-        value.innerHTML = error
-    }
-})
-
-let enit = 0
 const bgr = document.createElement("button")
+let enit = 0
+const warna = ["red","white","blue","brown","transparent"]
 bgr.innerHTML = "BGR"
-calcRight.append(bgr)
-const warna = ["red","blue","white","brown","transparent"]
 const parallax2 = document.getElementById("parallax2")
 bgr.addEventListener("click",()=>{
-    enit = enit + 1
+    enit ++
     parallax2.style.backgroundColor = warna[enit]
 })
-
+calcRight.append(bgr)
 
 const piano = document.getElementById("chord")
 const chords = ["a","c","d","e","f"]
 chords.forEach((chord)=>{
-    const button = document.createElement("button")
+    const button =document.createElement("button")
     button.innerHTML = chord
-    piano.append(button)
     button.addEventListener("click",()=>{
         const sound = new Audio(`asset/${chord}.wav`)
         sound.play()
     })
+    piano.append(button)
 })
+
 
 const silang = document.getElementById("silang")
 const link = document.getElementById("linkwoi")
