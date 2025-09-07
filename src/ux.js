@@ -1,4 +1,7 @@
-const load = document.getElementById("loading")
+let nama = prompt("Masukkan nama anda")
+if(nama != "Dimas"){
+    alert(`HII ${nama} WELCOME TO MY PERSONAL GABUT WEBSITE`)
+    const load = document.getElementById("loading")
 const body = document.body
 
 function instagram(){
@@ -336,3 +339,11 @@ function responseBot(jawabanUser){
 
 // }
 
+
+}
+else{
+    alert("NO WAY BRUH")
+    setTimeout(()=>{
+        window.location.reload()
+    },1200)
+}
