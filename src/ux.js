@@ -1,6 +1,6 @@
-let nama = prompt("Masukkan nama anda")
-if(nama != "Dimas"){
-    alert(`HII ${nama} WELCOME TO MY PERSONAL GABUT WEBSITE`)
+let namaa = prompt("Masukkan nama anda")
+if(namaa != "Dimas"){
+    alert(`HII ${namaa} WELCOME TO MY PERSONAL GABUT WEBSITE`)
     const load = document.getElementById("loading")
 const body = document.body
 
@@ -47,7 +47,7 @@ enter.addEventListener("click",()=>{
         value.innerHTML = error
     }
 })
-calcRight.append(button)
+calcRight.append(enter)
 
 const clear = document.createElement("button")
 clear.innerHTML = "CLEAR"
@@ -86,6 +86,7 @@ chords.forEach((chord)=>{
         const sound = new Audio(`asset/${chord}.wav`)
         sound.play()
     })
+    piano.append(button)
 })
 
 
