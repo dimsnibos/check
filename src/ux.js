@@ -8,19 +8,18 @@ function instagram(){
         window.location.href = "https://instagram.com/ptramadian_"
     },1200)
 }
-
 const value = document.getElementById("value")
 const calcLeft = document.getElementById("calc-left")
 const calcRight = document.getElementById("calc-right")
 
-const numbers = ['1','2','3','4','5','6','7','8','9','(',"0",")"]
+const numbers = ["1","2","3","4","5","6","7","8","9","(","0",")"]
 numbers.forEach((number)=>{
     const button = document.createElement("button")
-    button.innerText = number
+    button.innerHTML = number
+    calcLeft.append(button)
     button.addEventListener("click",()=>{
         value.innerHTML += number
     })
-    calcLeft.append(button)
 })
 
 const operations = ["+","-","x","/"]
@@ -45,24 +44,24 @@ enter.addEventListener("click",()=>{
         value.innerHTML = error
     }
 })
-calcRight.append(enter)
-
-const del = document.createElement("button")
-del.innerHTML = "DEL"
-del.addEventListener("click",()=>{
-    value.innerHTML = value.innerHTML.slice(0, -1)
-})
-calcRight.append(del)
+calcRight.append(button)
 
 const clear = document.createElement("button")
 clear.innerHTML = "CLEAR"
 clear.addEventListener("click",()=>{
-    value.innerHTML = "CLEAR THE AREA"
+    value.innerHTML = "CLEAR THE AREA..."
     setTimeout(()=>{
-        value.innerHTML = ""
-    },1200)    
+        value.innerHTML = " "
+    },1200)
 })
 calcRight.append(clear)
+
+const del = document.createElement("button")
+del.innerHTML = "DELETE"
+del.addEventListener("click",()=>{
+    value.innerHTML = value.innerHTML.slice(0, -1)
+})
+calcRight.append(del)
 
 const bgr = document.createElement("button")
 let enit = 0
@@ -78,13 +77,12 @@ calcRight.append(bgr)
 const piano = document.getElementById("chord")
 const chords = ["a","c","d","e","f"]
 chords.forEach((chord)=>{
-    const button =document.createElement("button")
+    const button = document.createElement("button")
     button.innerHTML = chord
     button.addEventListener("click",()=>{
         const sound = new Audio(`asset/${chord}.wav`)
         sound.play()
     })
-    piano.append(button)
 })
 
 
@@ -94,10 +92,10 @@ link.style.display = "none"
 silang.addEventListener("click",()=>{
     if(link.style.display === "none"){
         link.style.display = "block"
-    }
-    else{
-        link.style.display = "none"
-    }
+}
+else{
+    link.style.display = "none"
+}
 })
 
 const user = document.getElementById("userTanya")
