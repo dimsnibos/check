@@ -107,15 +107,15 @@ const botAnswer = document.getElementById("botJawab")
 
 function botSay(data){
     return[
-        `Hello, whats your name??`,
-        `Hi ${data?.nama}, Where are you from? `,
-        `Ouh youre from ${data?.kota}, great!, what's your hoby?`,
-        `Wow ${data?.hobi}, such a good hobby`,
+        "Hello, Whats Your name?",
+        `Hi ${data?.nama}, Whats your Hobby?`,
+        `${data?.hobi} such a good hobby, Where are you from?`,
+        `Ohh youre from ${data?.kota}, Nice to meet you!`
     ]
 }
 
-let userData = [ ]
 let init = 0
+let userData = [ ]
 botAnswer.innerHTML = botSay()[0]
 
 function submit(){
@@ -124,21 +124,18 @@ function submit(){
         responseBot({nama : user.value})
     }
     else if (init === 2){
-        responseBot({kota : user.value})
+        responseBot({hobi : user.value})
     }
     else if (init === 3){
-        responseBot({hobi : user.value})
-        user.style.display = "none"
-    }
-    else if (init === 4){
-        botAnswer.innerHTML = "Thank You"
+        responseBot({kota : user.value})
+        user.value = " "
         setTimeout(()=>{
             load.style.display = "flex"
             body.style.opacity = "0.7"
-        },500)
+        },300)
         setTimeout(()=>{
             window.location.reload()
-        },1200)
+        },3000)
     }
 }
 
@@ -148,15 +145,12 @@ function responseBot(jawabanUser){
     body.style.opacity = "0.7"
     setTimeout(()=>{
         load.style.display = "none"
-        user.value = ""
         body.style.opacity = "1"
+        user.value = ""
         botAnswer.innerHTML = botSay(jawabanUser)[init]
     },1200)
+
 }
-
-
-
-
 
 
 
