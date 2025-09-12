@@ -1,4 +1,6 @@
-const load = document.getElementById("loading")
+let namaUser = prompt("Masukkan Nama Anda ")
+if(namaUser != "Dimas"){
+    const load = document.getElementById("loading")
 const body = document.body
 
 function instagram(){
@@ -149,4 +151,12 @@ function responseBot(jawabanUser){
         user.value = ' '
         botAnswer.innerHTML = botSay(jawabanUser)[init]
     },1300)
+}
+
+}
+else{
+    alert("ERROR COBA KEMBALI")
+    setTimeout(()=>{
+        window.location.reload()
+    },2000)
 }
