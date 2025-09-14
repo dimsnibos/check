@@ -1,11 +1,11 @@
-let namaUser = prompt("Masukkan Nama Anda ")
-if(namaUser != "Dimas"){
+let namamu = String(prompt("Masukkan nama Mu"))
+if(namamu != "Dimas"){
     const load = document.getElementById("loading")
 const body = document.body
 
 function instagram(){
     load.style.display = "flex"
-    body.style.opacity = "0.7"
+    body.style.opacity ="0.7"
     setTimeout(()=>{
         window.location.href = "https://instagram.com/ptramadian_"
     },1200)
@@ -16,7 +16,7 @@ const link = document.getElementById("linkwoi")
 
 link.style.display = "none"
 silang.addEventListener("click",()=>{
-    if(link.style.display === "none"){
+    if(link.style.display === 'none'){
         link.style.display = "block"
     }
     else{
@@ -38,7 +38,7 @@ numbers.forEach((number)=>{
     calcLeft.append(button)
 })
 
-const operations = ["+","-","x","/"]
+const operations = ["+","-","/","x"]
 operations.forEach((operation)=>{
     const button = document.createElement("button")
     button.innerHTML = operation
@@ -49,7 +49,7 @@ operations.forEach((operation)=>{
 })
 
 const del = document.createElement("button")
-del.innerHTML = "DEL"
+del.innerHTML =  "DEL"
 del.addEventListener("click",()=>{
     value.innerHTML = value.innerHTML.slice(0, -1)
 })
@@ -67,38 +67,42 @@ calcRight.append(clear)
 
 const enter = document.createElement("button")
 enter.innerHTML = "ENTER"
-calcRight.append(enter)
 enter.addEventListener("click",()=>{
     let ekspresi = value.innerHTML
-    ekspresi = ekspresi.replace(/x/g, "*")
+    ekspresi = ekspresi.replace(/x/g,"*")
     try{
         value.innerHTML = eval(ekspresi)
     }
-    catch(error){
-        value.innerHTML = error
+    catch{
+        value.innerHTML = "ERROR"
+        setTimeout(()=>{
+            value.innerHTML=" "
+        },1200)
     }
 })
+calcRight.append(enter)
 
-let enit = 0
-const warna = ["red","black","white","brown","blue","white","transparent"]
 const bgr = document.createElement("button")
+bgr.innerHTML = "BGR"
+let enit = 0
 const parallax2 = document.getElementById("parallax2")
-calcRight.append(bgr)
+const warna = ["red","white","red","brown","black","white","transparent"]
 bgr.addEventListener("click",()=>{
-    enit ++
+    enit++
     parallax2.style.backgroundColor = warna[enit]
 })
+calcRight.append(bgr)
 
 const piano = document.getElementById("chord")
-const chords = ["a","c","d","e","f"]
+const chords = [ "a","c","d","e","f"]
 chords.forEach((chord)=>{
     const button = document.createElement("button")
     button.innerHTML = chord
-    piano.append(button)
     button.addEventListener("click",()=>{
-        const sound = new Audio(`asset/${chord}.wav`)
+        const sound = new Audio (`asset/${chord}.wav`)
         sound.play()
     })
+    piano.append(button)
 })
 
 const user = document.getElementById("userTanya")
@@ -106,38 +110,38 @@ const botAnswer = document.getElementById("botJawab")
 
 function botSay(data){
     return[
-        "Hi! Whats Your Name?",
-        `Hello ${data?.nama}, where are you from`,
-        `Ohh youre from ${data?.kota}, whats your hobby??`,
-        `Wow ${data?.hobi}, such a good hobby`,
+        `Hello!, Whats your name?`,
+        `Hi ${data?.nama}, where are you from?`,
+        `Ouhh youre from ${data?.kota}, whats your hobby?`,
+        `${data?.hobi} such a good hobby!`
     ]
 }
 
-let init = 0
 let userData = [ ]
+let init = 0
 botAnswer.innerHTML = botSay()[0]
 
 function submit(){
-    init ++
+    init++
     if(init === 1){
-        responseBot({nama :user.value})
+        responseBot({nama : user.value})
     }
     else if (init === 2){
         responseBot({kota : user.value})
     }
-    else if (init === 3){
+    else if(init === 3){
         responseBot({hobi : user.value})
         user.style.display = "none"
     }
-    else if (init === 4){
-        botAnswer.innerHTML = "Nice to know You!"
+    else if(init === 4){
+        botAnswer.innerHTML = "Nice to know ya!"
         setTimeout(()=>{
             load.style.display = "flex"
             body.style.opacity = "0.7"
         },500)
         setTimeout(()=>{
             window.location.reload()
-        },2500)
+        },2000)
     }
 }
 
@@ -148,15 +152,12 @@ function responseBot(jawabanUser){
     setTimeout(()=>{
         load.style.display = "none"
         body.style.opacity = "1"
-        user.value = ' '
+        user.value = " "
         botAnswer.innerHTML = botSay(jawabanUser)[init]
-    },1300)
+    },1200)
 }
-
 }
 else{
-    alert("ERROR COBA KEMBALI")
-    setTimeout(()=>{
-        window.location.reload()
-    },2000)
+    alert(namamu + " IS A WRONG NAME")
+    window.location.reload()
 }
