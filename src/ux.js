@@ -1,8 +1,19 @@
-let namalu = prompt("Masukkan Nama Anda")
+let namalu = prompt("masukkan nama anda")
 if(namalu != "Dimas"){
-alert(`HELOO ${namalu}, WELCOMEE`)
-const load = document.getElementById("loading")
+    alert("HELLOWWW WELCOMEE "+ namalu)
+    const load = document.getElementById("loading")
 const body = document.body
+
+const silang = document.getElementById("silang")
+const link = document.getElementById("linkwoi")
+link.style.display = "none"
+silang.addEventListener("click",()=>{
+    if(link.style.display === "none"){
+        link.style.display = "block"
+    }else{
+        link.style.display = "none"
+    }
+})
 
 function instagram(){
     load.style.display = "flex"
@@ -12,22 +23,9 @@ function instagram(){
     },1200)
 }
 
-const silang = document.getElementById("silang")
-const link = document.getElementById("linkwoi")
-
-link.style.display = "none"
-silang.addEventListener("click",()=>{
-    if(link.style.display === "none"){
-        link.style.display = "block"
-    }
-    else{
-        link.style.display = "none"
-    }
-})
-
-const value = document.getElementById("value")
-const calcRight = document.getElementById("calc-right")
 const calcLeft = document.getElementById("calc-left")
+const calcRight = document.getElementById("calc-right")
+const value = document.getElementById("value")
 
 const numbers = ["1","2","3","4","5","6","7","8","9","(","0",")"]
 numbers.forEach((number)=>{
@@ -51,23 +49,24 @@ operations.forEach((operation)=>{
 
 const del = document.createElement("button")
 del.innerHTML = "DEL"
-calcRight.append(del)
 del.addEventListener("click",()=>{
     value.innerHTML = value.innerHTML.slice(0, -1)
 })
+calcRight.appendChild(del)
 
 const clear = document.createElement("button")
 clear.innerHTML = "CLEAR"
-calcRight.append(clear)
 clear.addEventListener("click",()=>{
     value.innerHTML = "CLEAR THE AREA..."
     setTimeout(()=>{
-        value.innerHTML = ' '
+        value.innerHTML = " "
     },1200)
 })
+calcRight.append(clear)
 
 const enter = document.createElement("button")
-enter.innerHTML = "ENTER"
+enter.innerHTML = "enter"
+calcRight.append(enter)
 enter.addEventListener("click",()=>{
     let ekspresi = value.innerHTML
     ekspresi = ekspresi.replace(/x/g,"*")
@@ -81,13 +80,13 @@ enter.addEventListener("click",()=>{
         },1200)
     }
 })
-calcRight.append(enter)
+
+const warna = ["red","white","blue","brown","white","transparent"]
+let enit = 0
+const parallax2 = document.getElementById("parallax2")
 
 const bgr = document.createElement("button")
-let enit = 0
 bgr.innerHTML = "BGR"
-const warna = ["red", "white","white","red","black","red","blue","transparent","black","brown","white","transparent"]
-const parallax2 = document.getElementById("parallax2")
 calcRight.append(bgr)
 bgr.addEventListener("click",()=>{
     enit = enit + 1
@@ -102,7 +101,7 @@ chords.forEach((chord)=>{
     piano.append(button)
     button.addEventListener("click",()=>{
         const sound = new Audio(`asset/${chord}.wav`)
-        sound.play
+        sound.play()
     })
 })
 
@@ -111,15 +110,15 @@ const botAnswer = document.getElementById("botJawab")
 
 function botSay(data){
     return[
-    `Hi, What's your name??`,
-    `Hello ${data?.nama}, where are you from?`,
-    `Ouhh youre from ${data?.kota}, Whats your favourite game?`,
-    `Wow ${data?.game}, thats interesting!`,
-    ]
+    `Hoy, Whats your name?`,
+        `Hi ${data?.nama}, where are you from?`,
+        `Ouh youre from ${data?.kota}, whats your favourite game?`,
+        `Wow ${data?.game} thats interesting!`,
+]
 }
 
-let userData = [ ]
 let init = 0
+let userData = [ ]
 botAnswer.innerHTML = botSay()[0]
 
 function submit(){
@@ -135,7 +134,7 @@ function submit(){
         user.style.display = "none"
     }
     else if(init === 4){
-        botAnswer.innerHTML = "Nice to Know ya !"
+        botAnswer.innerHTML = `Nice to know ya!`
         setTimeout(()=>{
             load.style.display = "flex"
             body.style.opacity = "0.7"
@@ -157,9 +156,10 @@ function responseBot(jawabanUser){
         user.value = ""
     },1200)
 }
-
 }
 else{
-    alert(namalu + " is a wrong name, ULANGI!")
-    window.location.reload()
+    alert ("Nama lu "+namalu+", SALAH")
+    setTimeout(()=>{
+        window.location.reload()
+    },1200)
 }
